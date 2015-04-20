@@ -14,11 +14,15 @@
 
 USER=unicorn
 
-RAILS_APP_FOLDER=/u/apps/railsapp
+RAILS_APP_FOLDER=/srv/apps/railsapp
 
 RAILS_ENV=production
 
-SOURCE_ENVIRONMENT_VARS=$RAILS_APP_FOLDER/init.env
+# Allow for a shell source file in the project folder
+# e.g.
+# export SECRET_KEY_BASE=7a6b1d5c4e7e1ff82fa4c6e1b2fac6edfa7c98e7acbd
+# export DATABASE_URL=mysql2:user@password....
+SOURCE_ENVIRONMENT_VARS=$RAILS_APP_FOLDER/init/$RAILS_.env
 
 [ -f $SOURCE_ENVIRONMENT_VARS ] && . $SOURCE_ENVIRONMENT_VARS
 
